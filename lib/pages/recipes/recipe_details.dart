@@ -13,6 +13,8 @@ class RecipeDetailsPage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(recipe.title ?? "Recipe Details"),
+        backgroundColor: Colors.white,
+
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(12),
@@ -21,7 +23,7 @@ class RecipeDetailsPage extends StatelessWidget {
           children: [
             if (recipe.image != null)
               ClipRRect(
-                borderRadius: BorderRadius.circular(12),
+               // borderRadius: BorderRadius.circular(12),
                 child: Image.network(
                   recipe.image!,
                   width: double.infinity,

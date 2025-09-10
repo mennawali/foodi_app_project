@@ -1,123 +1,122 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foodi_app_project/app_colors.dart';
-import 'package:foodi_app_project/model/PopularResponse.dart';
 import 'package:foodi_app_project/model/ResponseRecipes.dart';
-class RecipeWidget extends StatelessWidget{
-//Results popularRecipe;
-//RecipeWidget({ this.popularRecipe});
 
-final List<Map<String, dynamic>> recipes = [
-    {
-      "name": "Pasta with Cheese",
-      "time": "20 min",
-      "ingredients": "Pasta, Cheese, Milk",
-      "image": "assets/images/banner1.svg",
-      "isFav": false
-    },
-  {
-    "name": "Pasta with Cheese",
-    "time": "20 min",
-    "ingredients": "Pasta, Cheese, Milk",
-    "image": "assets/images/banner1.svg",
-    "isFav": false
-  },
-  {
-    "name": "Pasta with Cheese",
-    "time": "20 min",
-    "ingredients": "Pasta, Cheese, Milk",
-    "image": "assets/images/banner1.svg",
-    "isFav": false
-  },
-  {
-    "name": "Pasta with Cheese",
-    "time": "20 min",
-    "ingredients": "Pasta, Cheese, Milk",
-    "image": "assets/images/banner1.svg",
-    "isFav": false
-  },
-    ];
+class RecipeWidget extends StatelessWidget {
+  final Recipes recipe;
+  const RecipeWidget({super.key, required this.recipe});
+
   @override
   Widget build(BuildContext context) {
-    final recipe = recipes[0];
-    return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(12)),
-                  child:SvgPicture.asset( recipe["image"],
-                  //Image.network(
-                   // popularRecipe.image??'',
-
-                    height: 120,
-                    width: 150,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              Positioned(
-                right: 12,
-                top: 12,
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-
-                ),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.favorite_border,
-                      size: 20,
-                    ),
-
-                    onPressed: () {
-
-                    },
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return SizedBox(
+     // height: MediaQuery.of(context).size.height*0.2, // هنا تحددي ارتفاع الكارد زي ما تحبي
+    //  width: double.infinity, // يملأ عرض العمود/الصف
+      child: Card(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          //mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
               children: [
-                SizedBox(
-                  width: 150, // نفس عرض الصورة
-                  child: Text(
-                   // popularRecipe.title ?? '',
-                    recipe["name"] ,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: recipe.image != null
+          ? ClipRRect(
+                      borderRadius:
+                      const BorderRadius.all(Radius.circular(12)),
+                      child: Image.network(
+                        recipe.image
+                            ?.trim()
+                            .replaceAll(RegExp(r'\.$'), '') ??
+                            '',
+                        height: 120,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                    ):
+                    Center(child: SvgPicture.asset('assets/images/recipe.svg')),
+
+                ),
+                Positioned(
+                  right: 12,
+                  top: 12,
+                  child: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.favorite_border,
+                        size: 20,
+                      ),
+                      onPressed: () {},
+                    ),
                   ),
                 ),
-
-
-                const SizedBox(height: 4),
-                // Text("⏱ ${popularRecipe.readyInMinutes}",
-                //     style: const TextStyle(fontSize: 12)),
-                // const SizedBox(height: 4),
-                // Text("🥗 ${recipe["ingredients"]}",
-                //     style: const TextStyle(fontSize: 12)),
               ],
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    child: Text(
+                      recipe.title ?? '',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Icon(Icons.access_time,
+                        size: 15,
+                      color:Colors.grey,),
+                      SizedBox(width: 10,),
+                      Text(
+                        "${recipe.readyInMinutes}",
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                      SizedBox(width: 28,),
+                      Row(
+                        children: [Icon(Icons.room_service_outlined ,size: 15,
+                          color:Colors.grey,),
+                          SizedBox(width: 7,),
+                          Text("Serves: ${recipe.servings}", style: const TextStyle(fontSize: 12)),
+
+                        ],
+                      ),
+                    ],
+                  ),
+
+                  Row(
+                    children: [
+                      Icon(Icons.favorite, size: 15,
+                        color:AppColors.primaryColor,),
+                      SizedBox(width: 10,),
+                      Text("${recipe.aggregateLikes} likes", style: const TextStyle(fontSize: 12)),
+
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

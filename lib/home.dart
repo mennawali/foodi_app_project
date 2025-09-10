@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foodi_app_project/app_colors.dart';
 import 'package:foodi_app_project/pages/home_page.dart';
 import 'package:foodi_app_project/pages/profile.dart';
@@ -50,12 +51,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         _selectedIndex = NavItem.navItems.indexOf(e);
                       });
                     },
-                    icon: Icon(
-                      e.icon,
+                    icon: e.icon ,
                       color: _selectedIndex == NavItem.navItems.indexOf(e)
                           ? AppColors.primaryColor
                           : AppColors.primaryColor,
-                    ),
+
                   ),
                 ),
               )
@@ -92,14 +92,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class NavItem {
   final String title;
-  final IconData icon;
+  final Widget icon;
   final Widget page;
 
   NavItem({required this.title, required this.icon, required this.page});
 
   static List<NavItem> navItems = [
-    NavItem(title: 'Home', icon: Icons.home, page: HomePage()),
-    NavItem(title: 'Recipes', icon: Icons.production_quantity_limits, page: TabWidget()),
-    NavItem(title: 'Profile', icon: Icons.person, page: Profile()),
+    NavItem(title: 'Home', icon: Icon(Icons.home), page: HomePage()),
+    NavItem(title: 'Recipes', icon: Icon(Icons.restaurant), page: TabWidget()),
+    NavItem(title: 'Profile', icon: Icon(Icons.person,), page: Profile()),
   ];
 }
