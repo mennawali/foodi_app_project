@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodi_app_project/api/api_manager.dart';
-import 'package:foodi_app_project/custom/recipe_widget.dart';
+import 'package:foodi_app_project/custom/popular_widget.dart';
 
 class PopularRecipe extends StatelessWidget {
   final List<Map<String, dynamic>> recipes = [
@@ -71,7 +71,7 @@ class PopularRecipe extends StatelessWidget {
           itemCount: recipes.length,
           separatorBuilder: (context, _) => const SizedBox(width: 12),
           itemBuilder: (context, index) {
-            return RecipeWidget();
+            return PopularWidget();
           },
         );
   //     },

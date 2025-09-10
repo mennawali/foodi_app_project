@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodi_app_project/custom/recipe_widget.dart';
 import 'package:foodi_app_project/pages/recipes/recipe_details.dart';
 
 import '../../Api/api_manager.dart';
@@ -84,11 +85,17 @@ class _RecipesState extends State<Recipes> {
 
         final recipes = data.recipes ?? [];
 
-        return  ListView.builder(
+        return  GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            childAspectRatio: 0.7,
+              mainAxisExtent: 280
+          ),
           itemCount: recipes.length,
           itemBuilder: (context, recipeIndex) {
             final recipe = recipes[recipeIndex];
-
             return GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -98,48 +105,10 @@ class _RecipesState extends State<Recipes> {
                   ),
                 );
               },
-              child: Card(
-                margin: const EdgeInsets.all(12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Column(
-                  children: [
-                    if (recipe.image != null)
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.network(
-                          recipe.image?.trim().replaceAll(RegExp(r'\.$'), '') ?? '' ,// إزالة النقطة لو موجودة
-                          height: 200,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            return Container(
-                              height: 200,
-                              color: Colors.grey[300],
-                              child: const Icon(
-                                Icons.broken_image,
-                                size: 80,
-                                color: Colors.grey,
-                              ),
-                            );
-                          },
-                        )
-
-                      ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        recipe.title ?? 'No Title',
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: RecipeWidget(recipe: recipe),
+              )
             );
           },
         );
