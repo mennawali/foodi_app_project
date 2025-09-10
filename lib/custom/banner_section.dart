@@ -21,13 +21,13 @@ class _BannerSectionState extends State<BannerSection> {
   Widget build(BuildContext context) {
 
     return Column(
+     // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             height: MediaQuery
                 .of(context)
                 .size
                 .height * 0.28,
-
             child: PageView.builder(
               onPageChanged: (value){
                 setState(() {
@@ -35,9 +35,17 @@ class _BannerSectionState extends State<BannerSection> {
                 });
               },
               itemBuilder: (context, index) {
-                return SvgPicture.asset(images[index],
+                return Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  child: SvgPicture.asset(
+                    images[index],
+                    fit: BoxFit.fill,
+                  ),
                 );
               },
+
               itemCount: images.length,),
           ),
           SizedBox(height: 20,),

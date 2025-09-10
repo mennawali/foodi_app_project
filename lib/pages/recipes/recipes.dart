@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:foodi_app_project/recipe_details.dart';
+import 'package:foodi_app_project/pages/recipes/recipe_details.dart';
 
-import 'Api/api_manager.dart';
-import 'model/ResponseRecipes.dart';
+import '../../Api/api_manager.dart';
+import '../../model/ResponseRecipes.dart';
 
 
-class NewsWidget extends StatefulWidget {
+class Recipes extends StatefulWidget {
   final String category;
-  NewsWidget({required this.category});
+  Recipes({required this.category});
 
   @override
-  State<NewsWidget> createState() => _NewsWidgetState();
+  State<Recipes> createState() => _RecipesState();
 }
 
-class _NewsWidgetState extends State<NewsWidget> {
+class _RecipesState extends State<Recipes> {
 
   @override
   Widget build(BuildContext context) {
