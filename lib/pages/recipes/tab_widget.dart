@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodi_app_project/recipes.dart';
-import 'package:foodi_app_project/tabs/tab_item.dart';
+import 'package:foodi_app_project/pages/recipes/recipes.dart';
+import 'package:foodi_app_project/pages/recipes/tab_item.dart';
 
 class TabWidget extends StatefulWidget{
   @override
@@ -38,7 +38,7 @@ class _TabWidgetState extends State<TabWidget> {
       
       
               ),
-              Expanded(child: NewsWidget( category: categories[selectedIndex],))
+              Expanded(child: Recipes( category: categories[selectedIndex],))
             ],
           )),
     );

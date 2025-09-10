@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:foodi_app_project/model/PopularResponse.dart';
 import 'package:foodi_app_project/model/ResponseRecipes.dart';
 import 'package:http/http.dart' as http;
 class ApiManager{
@@ -32,4 +33,27 @@ class ApiManager{
       throw Exception('Failed to load nutrition data');
     }
   }
+  //https://api.spoonacular.comrecipes/complexSearch?number=20&sort=popularity&apiKey=aa1341df60d54b9dac3e343d9a90007d
+
+  static Future<PopularResponse?> getPopularRecipes() async {
+    Uri url = Uri.https(
+      'api.spoonacular.com',
+      '/recipes/complexSearch',
+      {
+        'apiKey': 'aa1341df60d54b9dac3e343d9a90007d',
+        'number': '20',
+        'sort': 'popularity',   // ⬅️ هنا بنخليها popular
+      },
+    );
+
+    var response = await http.get(url);
+    try {
+      var responseBody = response.body;
+      var json = jsonDecode(responseBody);
+      return PopularResponse.fromJson(json);
+    } catch (e) {
+      throw e;
+    }
+  }
+
 }
