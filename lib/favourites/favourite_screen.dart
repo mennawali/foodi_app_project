@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../app_colors.dart';
-import '../custom/recipe_widget.dart';
+
 import 'favourite_provider_recipe_widget.dart';
 
 class FavoriteScreen extends StatelessWidget {
@@ -21,10 +21,10 @@ class FavoriteScreen extends StatelessWidget {
           ? Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             Icon(Icons.favorite_border,
                 size: 80, color: AppColors.grey),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
               "No favorites yet",
               style: TextStyle(
