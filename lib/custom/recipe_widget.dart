@@ -25,21 +25,28 @@ class RecipeWidget extends StatelessWidget {
               children: [
                 Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: recipe.image != null
-          ? ClipRRect(
-                      borderRadius:
-                      const BorderRadius.all(Radius.circular(12)),
-                      child: Image.network(
-                        recipe.image
-                            ?.trim()
-                            .replaceAll(RegExp(r'\.$'), '') ??
-                            '',
-                        height: 120,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
-                    ):
-                    Center(child: SvgPicture.asset('assets/images/recipe.svg')),
+                  child: recipe.image != null
+                      ? ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    child: Image.network(
+                      recipe.image!
+                          .trim()
+                          .replaceAll(RegExp(r'\.$'), ''),
+                      height: 120,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        // لو الصورة مش لاقياها أو رجعت 404
+                        return Center(
+                          child: SvgPicture.asset(
+                            'assets/images/recipe.svg',
+                            height: 80,
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                      : Center(child: SvgPicture.asset('assets/images/recipe.svg')),
 
                 ),
                 Positioned(

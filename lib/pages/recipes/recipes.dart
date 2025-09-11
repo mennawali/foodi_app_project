@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodi_app_project/custom/recipe_widget.dart';
 import 'package:foodi_app_project/pages/recipes/recipe_details.dart';
+import 'package:foodi_app_project/pages/recipes/recipe_details/recipe_details_page.dart';
 
 import '../../Api/api_manager.dart';
 import '../../model/ResponseRecipes.dart';
