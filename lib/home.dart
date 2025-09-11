@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foodi_app_project/app_colors.dart';
+import 'package:foodi_app_project/favourites/favourite_screen.dart';
 import 'package:foodi_app_project/pages/home_page.dart';
 import 'package:foodi_app_project/pages/profile.dart';
 import 'package:foodi_app_project/pages/recipes/tab_widget.dart';
@@ -19,20 +20,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       body: NavItem.navItems[_selectedIndex].page,
       bottomNavigationBar: Container(
 
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3), // لون الظل
+              color: AppColors.grey.withOpacity(0.3), // لون الظل
               spreadRadius: 2, // مدى الانتشار
               blurRadius: 5,   // درجة التمويه
               offset: const Offset(0, 3), // اتجاه الظل (x, y)
             ),
           ],
-          color: Colors.white,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
         margin: EdgeInsets.all(20),
@@ -73,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
                       color: _selectedIndex == NavItem.navItems.indexOf(e)
                           ? AppColors.primaryColor
-                          :  Colors.white,
+                          :  AppColors.white,
 
                     ),
                   ),
@@ -100,6 +101,8 @@ class NavItem {
   static List<NavItem> navItems = [
     NavItem(title: 'Home', icon: Icon(Icons.home), page: HomePage()),
     NavItem(title: 'Recipes', icon: Icon(Icons.restaurant), page: TabWidget()),
-    NavItem(title: 'Profile', icon: Icon(Icons.person,), page: Profile()),
+    NavItem(title: 'Profile', icon: Icon(Icons.favorite_sharp,), page:  FavoriteScreen()),
+
+
   ];
 }

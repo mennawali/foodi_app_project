@@ -7,7 +7,7 @@ class ApiManager{
   static Future<ResponseRecipes?> getRecipes(String category) async {
     //https://api.spoonacular.com/recipes/random?number=20&apiKey=aa1341df60d54b9dac3e343d9a90007d
     Uri url=Uri.https('api.spoonacular.com','/recipes/random',{
-      'apiKey':'aa1341df60d54b9dac3e343d9a90007d',
+      'apiKey':'b79209a274ef448d9dafc9064eaa16f3',
       'number':'20',
       'include-tags': category,
     });
@@ -23,7 +23,7 @@ class ApiManager{
 
   static Future<Map<String, dynamic>> getRecipeNutrition(int recipeId) async {
     Uri url = Uri.https('api.spoonacular.com', '/recipes/$recipeId/nutritionWidget.json', {
-      'apiKey': 'aa1341df60d54b9dac3e343d9a90007d',
+      'apiKey': 'b79209a274ef448d9dafc9064eaa16f3',
     });
 
     final response = await http.get(url);
@@ -40,7 +40,7 @@ class ApiManager{
       'api.spoonacular.com',
       '/recipes/complexSearch',
       {
-        'apiKey': 'aa1341df60d54b9dac3e343d9a90007d',
+        'apiKey': 'b79209a274ef448d9dafc9064eaa16f3',
         'number': '20',
         'sort': 'popularity',   // ⬅️ هنا بنخليها popular
       },
