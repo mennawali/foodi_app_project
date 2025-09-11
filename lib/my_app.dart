@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:foodi_app_project/home_page.dart';
 import 'package:foodi_app_project/splach_screen/splach_screen.dart';
 
 class MyApp extends StatelessWidget{

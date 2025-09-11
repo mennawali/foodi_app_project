@@ -3,43 +3,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:foodi_app_project/app_colors.dart';
 
 import 'package:foodi_app_project/model/ResponseRecipes.dart';
-class PopularWidget extends StatelessWidget{
-//Results popularRecipe;
-//RecipeWidget({ this.popularRecipe});
 
-  final List<Map<String, dynamic>> recipes = [
-    {
-      "name": "Pasta with Cheese",
-      "time": "20 min",
-      "ingredients": "Pasta, Cheese, Milk",
-      "image": "assets/images/banner1.svg",
-      "isFav": false
-    },
-    {
-      "name": "Pasta with Cheese",
-      "time": "20 min",
-      "ingredients": "Pasta, Cheese, Milk",
-      "image": "assets/images/banner1.svg",
-      "isFav": false
-    },
-    {
-      "name": "Pasta with Cheese",
-      "time": "20 min",
-      "ingredients": "Pasta, Cheese, Milk",
-      "image": "assets/images/banner1.svg",
-      "isFav": false
-    },
-    {
-      "name": "Pasta with Cheese",
-      "time": "20 min",
-      "ingredients": "Pasta, Cheese, Milk",
-      "image": "assets/images/banner1.svg",
-      "isFav": false
-    },
-  ];
+import '../model/PopularResponse.dart';
+class PopularWidget extends StatelessWidget{
+Results popularRecipe;
+PopularWidget({ required this.popularRecipe});
+
   @override
   Widget build(BuildContext context) {
-    final recipe = recipes[0];
     return Card(
       color: Colors.white,
       shape: RoundedRectangleBorder(
@@ -53,10 +24,9 @@ class PopularWidget extends StatelessWidget{
                 padding: const EdgeInsets.all(8.0),
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(12)),
-                  child:SvgPicture.asset( recipe["image"],
-                    //Image.network(
-                    // popularRecipe.image??'',
-
+                  child:
+                    Image.network(
+                    popularRecipe.image??'',
                     height: 120,
                     width: 150,
                     fit: BoxFit.fill,
@@ -96,8 +66,8 @@ class PopularWidget extends StatelessWidget{
                 SizedBox(
                   width: 150, // نفس عرض الصورة
                   child: Text(
-                    // popularRecipe.title ?? '',
-                    recipe["name"] ,
+                    popularRecipe.title ?? '',
+
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 14,

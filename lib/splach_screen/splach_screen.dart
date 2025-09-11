@@ -95,7 +95,7 @@ class SplachScreen extends StatelessWidget{
                                 backgroundColor:  Colors.black
                             ),
                             onPressed:() {
-                              Navigator.push( context, MaterialPageRoute(builder:  (context) => LoginScreen(),));
+                              Navigator.pushReplacement( context, MaterialPageRoute(builder:  (context) => LoginScreen(),));
                             }, child: Text("Login",style: TextStyle(color: Colors.white),)),
                       ),
                     ),

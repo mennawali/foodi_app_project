@@ -4,8 +4,9 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:foodi_app_project/app_colors.dart';
 import 'package:foodi_app_project/custom/banner_section.dart';
-import 'package:foodi_app_project/popular_recipe.dart';
+import 'package:foodi_app_project/pages/recipes/popular_recipe.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../firebase_authentication/user_model.dart';
@@ -39,13 +40,22 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
-                'Good Morning',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'Sofia',
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Good Morning',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Sofia',
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Icon(Icons.sunny,),
+                  )
+                ],
               ),
               Text(
                 userName ?? '',

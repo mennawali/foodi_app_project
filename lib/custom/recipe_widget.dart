@@ -60,7 +60,7 @@ class RecipeWidget extends StatelessWidget {
                       icon: Icon(
                         isFav ? Icons.favorite : Icons.favorite_border,
                         size: 20,
-                        color: isFav ? Colors.blue : Colors.grey,
+                        color: isFav ? AppColors.primaryColor: Colors.grey,
                       ),
                       onPressed: () {
                         favoritesProvider.toggleFavorite(recipe);
