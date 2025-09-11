@@ -1,10 +1,16 @@
+
+
+
+
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foodi_app_project/custom/banner_section.dart';
 import 'package:foodi_app_project/popular_recipe.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../model/ResponseRecipes.dart';
+import '../firebase_authentication/user_model.dart';
+
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -47,6 +53,7 @@ class _HomePageState extends State<HomePage> {
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Sofia',
+                  color: Colors.black,
                 ),
               ),
               Text(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodi_app_project/app_colors.dart';
 
 
+import '../home.dart';
 import 'firebase_functions.dart';
 
 
@@ -86,7 +87,7 @@ class _AuthScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(25),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: AppColors.black.withOpacity(0.1),
                       blurRadius: 10,
                       offset: const Offset(0, 5),
                     ),

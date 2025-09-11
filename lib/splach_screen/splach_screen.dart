@@ -59,7 +59,7 @@ class SplachScreen extends StatelessWidget{
                             padding: const EdgeInsets.only(top:550),
                             child: Text("Help your path to health ",
                               style: TextStyle(
-                                color:AppColors.white,
+                                color:Colors.white,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Sofia',
@@ -76,7 +76,7 @@ class SplachScreen extends StatelessWidget{
                             padding: const EdgeInsets.only(top:580),
                             child: Text("goals with happiness",
                               style: TextStyle(
-                                color:AppColors.white,
+                                color:Colors.white,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Sofia',
@@ -92,11 +92,11 @@ class SplachScreen extends StatelessWidget{
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 padding: EdgeInsets.symmetric(horizontal:180,vertical: 20),
-                                backgroundColor: AppColors.button_color
+                                backgroundColor:  Colors.black
                             ),
                             onPressed:() {
                               Navigator.push( context, MaterialPageRoute(builder:  (context) => LoginScreen(),));
-                            }, child: Text("Login",style: TextStyle(color: AppColors.white),)),
+                            }, child: Text("Login",style: TextStyle(color: Colors.white),)),
                       ),
                     ),
 
