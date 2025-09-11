@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../app_colors.dart';
+import '../custom/recipe_widget.dart';
+import '../pages/recipes/recipe_details/recipe_details_page.dart';
+import 'favourite_provider_recipe_widget.dart';
+
+
+class FavoriteScreen extends StatelessWidget {
+  const FavoriteScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final favorites = Provider.of<FavoritesProvider>(context).favorites;
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: const Text("My Favorites",
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Sofia',
+          ),),
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body: favorites.isEmpty
+          ? Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.favorite_border,
+                size: 60, color: AppColors.grey),
+            SizedBox(height: 16),
+            Text(
+              "No favorites yet",
+              style: TextStyle(
+                fontSize: 18,
+                color: AppColors.grey,
+              ),
+            ),
+          ],
+        ),
+      )
+          : Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: GridView.builder(
+          itemCount: favorites.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+            childAspectRatio: 0.75,
+          ),
+          itemBuilder: (context, index) {
+            return InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RecipeDetailsPage(recipe: favorites[index]),
+                    ),
+                  );
+
+                },
+                child: RecipeWidget(recipe: favorites[index]));
+          },
+                  ),
+                ),
+    );
+  }
+}
