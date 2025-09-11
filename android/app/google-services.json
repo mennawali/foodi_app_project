@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "129160641542",
+    "project_id": "foodgi-iti-project",
+    "storage_bucket": "foodgi-iti-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129160641542:android:3d6392eb787301b733d787",
+        "android_client_info": {
+          "package_name": "com.example.foodi_app_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA91pZzNLZX_9vdXRDRlWxH4y2d1TLawK8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
