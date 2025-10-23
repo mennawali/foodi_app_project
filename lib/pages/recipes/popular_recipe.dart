@@ -26,7 +26,6 @@ class PopularRecipe extends StatelessWidget {
                 Text(popularRecipes.message ?? 'Unknown error'),
                 ElevatedButton(
                   onPressed: () {
-
                   },
                   child: const Text('Try Again'),
                 ),

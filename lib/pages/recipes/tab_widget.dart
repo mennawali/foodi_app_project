@@ -16,7 +16,6 @@ class _TabWidgetState extends State<TabWidget> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: DefaultTabController(
-
           length:categories.length,
           child: Column(
             children: [
@@ -24,7 +23,6 @@ class _TabWidgetState extends State<TabWidget> {
                   onTap: (index){
                     selectedIndex = index;
                     setState(() {
-
                     });
                   },
                   isScrollable: true,
@@ -35,8 +33,6 @@ class _TabWidgetState extends State<TabWidget> {
                           isSelected: selectedIndex == categories.indexOf(source)
                       )
                   ).toList()
-
-
               ),
               Expanded(child: Recipes( category: categories[selectedIndex],))
             ],

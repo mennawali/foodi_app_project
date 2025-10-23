@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     final user = FirebaseAuth.instance.currentUser;
     setState(() {
-      userName = user?.displayName ?? "User"; // لو مفيش displayName يظهر User
+      userName = user?.displayName ?? "User";
     });
   }
 
